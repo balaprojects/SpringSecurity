@@ -54,7 +54,15 @@
 >Implementing Basic Authentication
    1. Add dependency spring-boot-starter-security which by default provides form-based authentication with user id as 'user' and password being printed in the console as a UUID.
    2. To implement http basic authentication, we need to create a class that extends 'WebSecurityConfigurerAdapter',add @EnableWebSecurity and override method 'configure(HttpSecurity ..)'.<br>
-        <img src="https://github.com/balaprojects/images/blob/master/HttpBasic.png" width=400 height=100/>
+        <img src="https://github.com/balaprojects/images/blob/master/HttpBasic.png"/>
 >In-Memory Authentication
    1. 'UserDetailsservice' bean should be created using 'InMemoryUserDetailsManager' class.<br>
        <img src = "https://github.com/balaprojects/images/blob/master/InMemory_UserConfig.png"/>
+>JDBC Authentication
+   1. For Demo purpose we can add 'H2' and 'JPA' dependencies to pom. Create schema.sql and data.sql for USER table.
+   2. Create a entity named 'User' that maps to USER table.
+   3. Create JPARepository for 'User' entity.
+   4. Create a class that extends 'UserDetails' and takes 'User' bean in constructor.
+   5. Create a class that extends 'UserDetailsService' and override method 'loadUserByUserName()'. Autowire repository bean and call the method to load the user from database.
+   6. Create a bean for class 'DaoAuthenticationProvider' that takes 'UserDetailsService' and 'PasswordEncoder'.
+   7. In configurer class, override 'configure(AuthenticationManagerBuilder ..)' that takes provider.
