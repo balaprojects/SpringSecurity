@@ -54,4 +54,4 @@
 >Implementing Basic Authentication
    1. Add dependency spring-boot-starter-security which by default provides form-based authentication with user id as 'user' and password being printed in the console as a UUID.
    2. To implement http basic authentication, we need to create a class that extends 'WebSecurityConfigurerAdapter',add @EnableWebSecurity and override method 'configure(HttpSecurity ..)'.
-        
+        <img src="https://github.com/balaprojects/images/blob/master/HttpBasic.png" width=400 height=200>
