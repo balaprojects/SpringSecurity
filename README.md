@@ -57,4 +57,4 @@
         <img src="https://github.com/balaprojects/images/blob/master/HttpBasic.png" width=400 height=100/>
 >In-Memory Authentication
    1. 'UserDetailsservice' bean should be created using 'InMemoryUserDetailsManager' class.
-       <img src = "https://github.com/balaprojects/images/blob/master/InMemory_UserConfig.png" width=400 height=100/>
+       <img src = "https://github.com/balaprojects/images/blob/master/InMemory_UserConfig.png" width=200 height=50/>
