@@ -67,3 +67,15 @@
    5. Create a class that extends 'UserDetailsService' and override method 'loadUserByUserName()'. Autowire repository bean and call the method to load the user from database.
    6. Create a bean for class 'DaoAuthenticationProvider' that takes 'UserDetailsService' and 'PasswordEncoder'.
    7. In configurer class, override 'configure(AuthenticationManagerBuilder ..)' that takes provider.
+>Leveraging BCrypt for hashing
+   1. There is no reason for a password to be encrypted. So, never encrypt.
+   2. Hashing is the preferred technique. MD5 is dead, SHA-256 is breakable, BCrypt is the best in market today.
+>Authorization
+   1. A 'AUTH' table is created and roles for users are added to this table.
+   2. Create an entity class that maps to AUTH table.
+   3. Create JPARepository for above entity class.
+   4. Modify the custom 'UserDetails' class to take AUTH entity and set the GrantedAuthorities based on it.
+   5. Add @EnableGlobalMethodSecurity(prePostEnabled = true).
+   6. Add @PreAuthorize("hasRole('ROLE_ADMIN')") before methods. Roles are prefixed with ROLE_ as a convention.
+   7. To prefix ROLE_ to the roles fetched from DB, we need to create a bean 'GrantedAuthoritiesMapper()'.
+   8. Set the above mapper to authentication provider.
