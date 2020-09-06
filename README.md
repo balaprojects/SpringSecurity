@@ -81,3 +81,8 @@
    7. To prefix ROLE_ to the roles fetched from DB, we need to create a bean 'GrantedAuthoritiesMapper()'.
       ![](https://github.com/balaprojects/images/blob/master/Authorities_Mapper.png)
    8. Set the above mapper to authentication provider.
+>Form Based Authentication
+   1. Cannot support logging off.
+   2. No risk of security implications with either, assuming TLS is used.
+   3. Form based allows you to customize form, seamless with applcation and provides logout. Also, provides inherent remember-me feature.
+      ![](https://github.com/balaprojects/images/blob/master/Form-Login.png)
