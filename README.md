@@ -78,4 +78,5 @@
    5. Add @EnableGlobalMethodSecurity(prePostEnabled = true).
    6. Add @PreAuthorize("hasRole('ROLE_ADMIN')") before methods. Roles are prefixed with ROLE_ as a convention.
    7. To prefix ROLE_ to the roles fetched from DB, we need to create a bean 'GrantedAuthoritiesMapper()'.
+      ![](https://github.com/balaprojects/images/blob/master/Authorities_Mapper.png)
    8. Set the above mapper to authentication provider.
