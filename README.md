@@ -86,3 +86,18 @@
    2. No risk of security implications with either, assuming TLS is used.
    3. Form based allows you to customize form, seamless with applcation and provides logout. Also, provides inherent remember-me feature.
       ![](https://github.com/balaprojects/images/blob/master/Form-Login.png)
+### LDAP Authentication
+>LDAP for Authentication
+   1. Why LDAP?
+      - Built into may operating systems.
+      - Interoperable
+      - Scalable
+   2. Spring Security LDAP
+      - spring-security-ldap
+      - Full support for native LDAP operations.
+      - Password Hashing algorithms included.
+>Implementing LDAP Authentication
+   1. Configure Embedded LDAP for demo purpose.
+   2. In configurer, override method configure(AuthenticationManagerBuilder ..).
+   3. Using the builder set the LDAP configurations like User Search DN, Group Search DN, Base DN, Context Source etc
+      ![](https://github.com/balaprojects/images/blob/master/Ldap_Config.png)
