@@ -101,3 +101,25 @@
    2. In configurer, override method configure(AuthenticationManagerBuilder ..).
    3. Using the builder set the LDAP configurations like User Search DN, Group Search DN, Base DN, Context Source etc
       ![](https://github.com/balaprojects/images/blob/master/Ldap_Config.png)
+### OAuth2 Authentication
+>OAuth2
+   1. What is OAuth2?
+      - Protocol and framework for accessing HTTP services.
+      - Often used for third-party access..
+      - Can be used for system-to-system communication.
+   2. Parts of OAuth2
+      - Resource Owner - Often the user
+      - Client - application requesting access
+      - Resource Server - Hosts protected data and acoounts
+      - Authoriztion Server - Service that grants tokens 
+   3. Token Types
+      - Access Token - the secret and often short liven token that identifies the user.
+      - Renew Token - long lived token which gets renewed when access token expires.
+      - Scopes - provides the rights associated with the token.
+   4. Grant Types
+      - There are several grant types.
+      - Authorization code grant is the most common.
+      - Implicit is common in web apps and mobile apps.
+      - Client Credentials - system to system communication.
+>Spring and OAuth2
+   1. 
