@@ -149,7 +149,7 @@
           <version>2.3.0.RELEASE</version>
       </dependency>
       ```
-   2. Add @EnableAuthorizationServer
+   2. Add @EnableAuthorizationServer on class that extends ***AuthorizationServerConfigurerAdapter***
    3. In configurer, override configure(AuthorizationServerSecurityConfigurer ..)
       ```
       @Override
