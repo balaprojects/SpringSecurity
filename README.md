@@ -122,4 +122,21 @@
       - Implicit is common in web apps and mobile apps.
       - Client Credentials - system to system communication.
 >Spring and OAuth2
-   1. 
+   1. CommonOAuth2Provider
+      - Used to connect with systems like okta, google, facebook, github and several other OAuth providers.
+      - In Spring boot, we use this class by property based configuration.
+      - Provides client side OAuth integration. It allows you to provide 3rd third party support for the log in operation.
+   2. Authorization Server
+      - Provides authentication and authorization services.
+      - @EnableAuthorizationServer
+      - AuthorizationServerConfigurerAdapter to do more configuration.
+      - Supports various grant types.
+   3. Resource Server
+      - Provides the resources to be protected.
+      - @EnableResourceServer
+      - When you separate out Authorization and Resource server lot more configuration is required.
+   4. OAuth2 Client
+      - Full client side support often when you are not using facebook or github.
+      - @EnableOAuth2Client
+      - OAuth2RestTemplate provides much of the scaffolding. It manages all the tokens, manipulations and injecting header params.
+      - Support for various grant types.
