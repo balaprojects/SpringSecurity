@@ -140,3 +140,52 @@
       - @EnableOAuth2Client
       - OAuth2RestTemplate provides much of the scaffolding. It manages all the tokens, manipulations and injecting header params.
       - Support for various grant types.
+>Creating Authorization Server
+   1. Add below dependency
+      ```
+      <dependency>
+          <groupId>org.springframework.security.oauth</groupId>
+          <artifactId>spring-security-oauth2</artifactId>
+          <version>2.3.0.RELEASE</version>
+      </dependency>
+      ```
+   2. Add @EnableAuthorizationServer
+   3. In configurer, override configure(AuthorizationServerSecurityConfigurer ..)
+      ```
+      @Override
+      public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+        security
+            .passwordEncoder(NoOpPasswordEncoder.getInstance())
+            .checkTokenAccess("permitAll()")
+            .tokenKeyAccess("permitAll()");
+      }
+      ```
+  4. In configurer, override configure(ClientDetailsServiceConfigurer ..)
+     ```
+      @Override
+      public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        clients
+            .inMemory()
+            .withClient("bala_admin")
+            .secret("secret")
+            .scopes("READ", "WRITE", "DELETE")
+            .autoApprove(true)
+            .authorities("ROLE_ADMIN")
+            .authorizedGrantTypes("client_credentials")
+            .and()
+            .withClient("bala_user")
+            .secret("secret")
+            .scopes("READ")
+            .autoApprove(true)
+            .authorities("ROLE_USER")
+            .authorizedGrantTypes("client_credentials");
+      }
+     ```
+  5. In configurer, override configure(AuthoriationServerEndpointsConfigurer ..)
+     ```
+      @Override
+      public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        endpoints
+            .tokenStore(new InMemoryTokenStore());
+      }
+     ```
