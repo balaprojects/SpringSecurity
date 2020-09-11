@@ -207,3 +207,19 @@
       }
       ```
    3. Now we can start our application and test the changes.
+
+>OAuth with Third Party
+   1. Basic flow
+      - Authorize application
+      - Setup redirect URL
+      - Configure application (application.yml)
+      - Run
+   2. Example config
+      spring:
+        security:
+          oauth2:
+            client:
+              registration:
+                github:
+                  client-id: ...
+                  client-secret: ...
