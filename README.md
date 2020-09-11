@@ -15,7 +15,7 @@
 >Understanding Authentication and Authorization
   1. Authentication
       - Determination of who.
-      - Technically it is about deermining whether the pricipal is who they say they are.
+      - Technically it is about determining whether the pricipal is who they say they are.
       - Principals can be humans or machines.
   2. Authentication Support
       - HTTP Basic, Digest, x509, Form Based Authentication.
@@ -189,3 +189,21 @@
             .tokenStore(new InMemoryTokenStore());
       }
      ```
+>Client-Side implementation of OAuth
+   1. Add OAuthClient dependency in pom and add @EnableOAuth2Client on top of application class.
+   2. Create ***OAuth2RestTemplate*** with below configurations.
+      ```
+      @Bean
+      public OAuth2RestTemplate restTemplate() {
+        ClientCredentialsResourceDetails clientCredentialsResourceDetails = new ClientCredentialsResourceDetails();
+        clientCredentialsResourceDetails.setAccessTokenUri(BASE_URL.concat(TOKEN_URL));
+        clientCredentialsResourceDetails.setClientId("guest_app");
+        clientCredentialsResourceDetails.setClientSecret("secret");
+        clientCredentialsResourceDetails.setAuthenticationScheme(AuthenticationScheme.form);
+        clientCredentialsResourceDetails.setScope(new ArrayList<String>() {{ add("READ_ALL_GUESTS"); add("WRITE_GUEST"); add("UPDATE_GUEST"); }});
+        clientCredentialsResourceDetails.setGrantType("client_credentials");
+        AccessTokenRequest accessTokenRequest = new DefaultAccessTokenRequest();
+        return new OAuth2RestTemplate(clientCredentialsResourceDetails, new DefaultOAuth2ClientContext(accessTokenRequest));
+      }
+      ```
+   3. Now we can start our application and test the changes.
